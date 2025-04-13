@@ -150,7 +150,7 @@ const createIssueHTML = (issueData) => {
             </table>
 
             <!-- Content Container -->
-            <div style="position: relative; z-index: 1; padding: 16px;">
+            <div style="position: relative; z-index: 1; padding: 16px; border-top: 1px solid #e2e8f0;">
               <!-- Header -->
               <table cellpadding="0" cellspacing="0" border="0" width="100%" style="margin-bottom: 16px;">
                 <tr>
