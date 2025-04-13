@@ -4,12 +4,13 @@ const CLIENT_EMAILS = process.env.CLIENT_EMAILS ?
   ['pathlabs99@gmail.com'];
 
 const emailConfig = {
-  host: process.env.SMTP_HOST || 'smtp.gmail.com',
-  port: parseInt(process.env.SMTP_PORT || '587'),
-  secure: process.env.SMTP_SECURE === 'true',
+  service: 'gmail',  
+  host: 'smtp.gmail.com',
+  port: 587,
+  secure: false,
   auth: {
-    user: process.env.SMTP_USER,
-    pass: process.env.SMTP_PASS
+    user: process.env.SMTP_USER || 'pathlabs99@gmail.com',
+    pass: process.env.SMTP_PASS || 'xcgb ofay htnb ulim'
   }
 };
 
