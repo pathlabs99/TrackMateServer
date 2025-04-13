@@ -49,21 +49,11 @@ app.post('/send-report', async (req, res) => {
       comments: reportData.comments
     });
 
-    // Convert to CSV if needed
-    const csvData = convertReportToCSV(reportData);
-    
     const mailOptions = {
       from: 'TrackMate <pathlabs99@gmail.com>',
       to: CLIENT_EMAILS.join(', '),
       subject: `${reportId} - TrackMate Issue Report`,
-      html: htmlContent,
-      attachments: [
-        {
-          filename: `${reportId}_issue.csv`,
-          content: csvData,
-          contentType: 'text/csv'
-        }
-      ]
+      html: htmlContent
     };
 
     // Send the email

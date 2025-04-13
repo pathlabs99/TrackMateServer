@@ -24,7 +24,7 @@ const createSurveyHTML = (surveyData) => {
             <table cellpadding="0" cellspacing="0" border="0" width="100%" style="padding: 24px 24px 0 24px;">
               <tr>
                 <td align="left" width="60%" style="vertical-align: middle;">
-                  <img src="https://i.ibb.co/nqJNfH6Q/Official-Logo-Transparent.png" alt="PathLabs Logo" width="120" style="display: block;" />
+                  <img src="https://i.ibb.co/nqJNfH6/Official-Logo-Transparent.png" alt="TrackMate Logo" width="100" style="display: block;" />
                 </td>
                 <td align="right" width="40%" style="vertical-align: middle;">
                   <h1 style="margin: 0; font-size: 20px; font-weight: 500; color: #333333;">TrackMate Survey</h1>

@@ -130,7 +130,7 @@ const createIssueHTML = (issueData) => {
               <table cellpadding="0" cellspacing="0" border="0" width="100%" style="margin-bottom: 16px;">
                 <tr>
                   <td width="60%" align="left" style="vertical-align: middle;">
-                    <img src="https://i.ibb.co/nqJNfH6/Official-Logo-Transparent.png" alt="TrackMate Logo" width="100" style="display: block;" />
+                    <img src="https://example.com/new-logo.png" alt="TrackMate Logo" width="100" style="display: block;" />
                   </td>
                   <td width="40%" align="right" style="vertical-align: middle;">
                     <span style="font-size: 18px; font-weight: 500; color: #333333;">TrackMate</span>
