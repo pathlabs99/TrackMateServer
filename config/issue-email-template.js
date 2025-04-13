@@ -140,7 +140,7 @@ const createIssueHTML = (issueData) => {
     <body style="margin: 0; padding: 16px; background-color: #ffffff; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.4; color: #1a1a1a;">
       <table cellpadding="0" cellspacing="0" border="0" width="100%" style="max-width: 540px; margin: 0 auto;">
         <tr>
-          <td style="background-color: #ffffff; border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,0.12); padding: 0; position: relative; overflow: hidden;">
+          <td style="background-color: #ffffff; border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,0.12); padding: 0; position: relative; overflow: hidden; border: 1px solid #e2e8f0;">
             
             <!-- Header Strip -->
             <table cellpadding="0" cellspacing="0" border="0" width="100%">
@@ -259,63 +259,35 @@ const createIssueHTML = (issueData) => {
                 </tr>
               </table>
 
-              <!-- Location Details - Modernized without external images -->
-              <table cellpadding="0" cellspacing="0" border="0" width="100%" style="background-color: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; margin-bottom: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
-                <tr>
-                  <td style="padding: 12px;">
-                    <table cellpadding="0" cellspacing="0" border="0" width="100%">
-                      <tr>
-                        <td style="padding-bottom: 8px; border-bottom: 1px solid #edf2f7;">
-                          <h3 style="margin: 0; font-size: 15px; font-weight: 600; color: #333333;">Location Details</h3>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td style="padding-top: 8px; padding-bottom: 8px;">
-                          <!-- Map Button -->
-                          <table cellpadding="0" cellspacing="0" border="0" width="100%" style="margin-bottom: 8px;">
-                            <tr>
-                              <td>
-                                <a href="${googleMapsUrl}" style="background-color: #f0f4f8; color: #2563eb; text-decoration: none; font-size: 13px; font-weight: 500; padding: 6px 10px; border-radius: 4px; display: inline-block; border: 1px solid #e2e8f0;">
-                                  <span style="vertical-align: middle; margin-right: 4px; color: #2563eb; font-weight: bold;">📍</span>
+              <!-- Location Details -->
+              <tr>
+                <td style="padding-bottom: 24px;">
+                  <table cellpadding="0" cellspacing="0" border="0" width="100%" style="background-color: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+                    <tr>
+                      <td style="padding: 20px;">
+                        <table cellpadding="0" cellspacing="0" border="0" width="100%">
+                          <tr>
+                            <td style="padding-bottom: 16px; border-bottom: 1px solid #edf2f7;">
+                              <h3 style="margin: 0; font-size: 18px; font-weight: 600; color: #333333;">Location Details</h3>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td style="padding-top: 16px;">
+                              <p style="margin: 0 0 12px 0;">
+                                <a href="${googleMapsUrl}" style="color: #3182ce; text-decoration: none; display: inline-flex; align-items: center;" target="_blank">
                                   View on Google Maps
                                 </a>
-                              </td>
-                            </tr>
-                          </table>
-                          
-                          <!-- Location Description -->
-                          <table cellpadding="0" cellspacing="0" border="0" width="100%" style="margin-bottom: 6px;">
-                            <tr>
-                              <td style="vertical-align: top; width: 16px; padding-right: 4px;">
-                                <span style="font-size: 13px;">📌</span>
-                              </td>
-                              <td style="vertical-align: top;">
-                                <p style="margin: 0; color: #374151; font-size: 13px; line-height: 1.4;">
-                                  ${issueData.location || 'Location not specified'}
-                                </p>
-                              </td>
-                            </tr>
-                          </table>
-                          
-                          <!-- GPS Accuracy -->
-                          <table cellpadding="0" cellspacing="0" border="0" width="100%">
-                            <tr>
-                              <td style="vertical-align: top; width: 16px; padding-right: 4px;">
-                                <span style="font-size: 13px;">📡</span>
-                              </td>
-                              <td style="vertical-align: top;">
-                                <p style="margin: 0; color: #64748b; font-size: 13px;">
-                                  GPS: <span style="color: #374151; font-family: monospace;">${coordsDisplay}</span> (${accuracyDisplay})
-                                </p>
-                              </td>
-                            </tr>
-                          </table>
-                        </td>
-                      </tr>
-                    </table>
-                  </td>
-                </tr>
-              </table>
+                              </p>
+                              <p style="margin: 0 0 8px 0; color: #4a5568;">Location: ${issueData.location || 'Not specified'}</p>
+                              <p style="margin: 0; font-family: monospace; color: #4a5568;">Coordinates: ${coordsDisplay} (${accuracyDisplay})</p>
+                            </td>
+                          </tr>
+                        </table>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
 
               <!-- Issue Description -->
               <table cellpadding="0" cellspacing="0" border="0" width="100%" style="background-color: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; margin-bottom: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">

@@ -10,7 +10,7 @@ const createSurveyHTML = (surveyData) => {
     <body style="margin: 0; padding: 16px; background-color: #ffffff; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.4;">
       <table cellpadding="0" cellspacing="0" border="0" width="100%" style="max-width: 540px; margin: 0 auto;">
         <tr>
-          <td style="background-color: #ffffff; border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,0.12); padding: 0; position: relative; overflow: hidden;">
+          <td style="background-color: #ffffff; border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,0.12); padding: 0; position: relative; overflow: hidden; border: 1px solid #e2e8f0;">
             
             <!-- Header Strip -->
             <table cellpadding="0" cellspacing="0" border="0" width="100%">
