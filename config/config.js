@@ -1,4 +1,3 @@
-// Updated to match your Render environment variables
 const CLIENT_EMAILS = process.env.EMAIL_RECIPIENT 
   ? process.env.EMAIL_RECIPIENT.split(',').map(email => email.trim()) 
   : (() => {
