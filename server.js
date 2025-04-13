@@ -48,13 +48,37 @@ app.post('/send-report', async (req, res) => {
       coordinates: reportData.coordinates,
       comments: reportData.comments
     });
-
+    
     const mailOptions = {
       from: 'TrackMate <pathlabs99@gmail.com>',
       to: CLIENT_EMAILS.join(', '),
       subject: `${reportId} - TrackMate Issue Report`,
-      html: htmlContent
+      html: htmlContent,
+      attachments: []
     };
+
+    // Add photo if available
+    if (reportData.photo) {
+      try {
+        // Extract base64 data
+        const matches = reportData.photo.match(/^data:([A-Za-z-+\/]+);base64,(.+)$/);
+        
+        if (matches && matches.length === 3) {
+          const type = matches[1];
+          const data = matches[2];
+          const buffer = Buffer.from(data, 'base64');
+          
+          mailOptions.attachments.push({
+            filename: `${reportId}_photo.${type.split('/')[1] || 'jpg'}`,
+            content: buffer,
+            contentType: type
+          });
+        }
+      } catch (error) {
+        console.warn('Error processing photo attachment:', error);
+        // Continue without photo if there's an error
+      }
+    }
 
     // Send the email
     await sendIssueReport(mailOptions);
