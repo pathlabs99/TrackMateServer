@@ -1,29 +1,39 @@
-// Environment variables are handled by Render
-const CLIENT_EMAILS = process.env.CLIENT_EMAILS ? 
-  process.env.CLIENT_EMAILS.split(',').map(email => email.trim()) :
-  ['pathlabs99@gmail.com'];
+// Updated to match your Render environment variables
+const CLIENT_EMAILS = process.env.EMAIL_RECIPIENT 
+  ? process.env.EMAIL_RECIPIENT.split(',').map(email => email.trim()) 
+  : (() => {
+      throw new Error('EMAIL_RECIPIENT environment variable is required');
+    })();
 
 const emailConfig = {
-  service: 'gmail',  
-  host: 'smtp.gmail.com',
-  port: 587,
-  secure: false,
+  service: 'gmail', // You can make this configurable if needed
+  host: process.env.EMAIL_HOST || 'smtp.gmail.com',
+  port: parseInt(process.env.EMAIL_PORT || '587'),
+  secure: process.env.EMAIL_SECURE === 'true',
   auth: {
-    user: process.env.SMTP_USER || 'pathlabs99@gmail.com',
-    pass: process.env.SMTP_PASS || 'xcgb ofay htnb ulim'
+    user: process.env.EMAIL_USER || (() => {
+      throw new Error('EMAIL_USER environment variable is required');
+    })(),
+    pass: process.env.EMAIL_PASS || (() => {
+      throw new Error('EMAIL_PASS environment variable is required');
+    })()
   }
 };
 
 const corsConfig = {
-  origin: process.env.CORS_ORIGIN || '*',
-  methods: ['POST', 'GET'],
+  origin: process.env.ALLOWED_ORIGINS || (() => {
+    console.warn('ALLOWED_ORIGINS not set, using default "*"');
+    return '*';
+  })(),
+  methods: ['POST', 'GET'], // You could make this configurable
   credentials: true,
   maxAge: 86400 // 24 hours
 };
 
+// Rest of your configuration remains the same...
 const rateLimitConfig = {
-  windowMs: parseInt(process.env.RATE_LIMIT_WINDOW_MS || '900000'), // 15 minutes
-  max: parseInt(process.env.RATE_LIMIT_MAX_REQUESTS || '100'), // limit each IP to 100 requests per windowMs
+  windowMs: parseInt(process.env.RATE_LIMIT_WINDOW_MS || '900000'),
+  max: parseInt(process.env.RATE_LIMIT_MAX_REQUESTS || '100'),
   message: 'Too many requests from this IP, please try again later',
   standardHeaders: true,
   legacyHeaders: false,
