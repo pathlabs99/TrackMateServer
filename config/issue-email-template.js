@@ -137,8 +137,8 @@ const createIssueHTML = (issueData) => {
       <title>TrackMate Issue Report</title>
     </head>
 
-    <body style="margin: 0; padding: 16px; background-color: #ffffff; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.4; color: #1a1a1a;">
-      <table cellpadding="0" cellspacing="0" border="0" width="100%" style="max-width: 540px; margin: 0 auto;">
+    <body style="margin: 0; padding: 20px; background-color: #ffffff; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.4; color: #1a1a1a;">
+      <table cellpadding="0" cellspacing="0" border="0" width="100%" style="max-width: 600px; margin: 0 auto;">
         <tr>
           <td style="background-color: #ffffff; border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,0.12); padding: 0; position: relative; overflow: hidden; border: 1px solid #e2e8f0;">
             
@@ -150,105 +150,65 @@ const createIssueHTML = (issueData) => {
             </table>
 
             <!-- Content Container -->
-            <div style="position: relative; z-index: 1; padding: 16px; border-top: 1px solid #e2e8f0;">
+            <div style="position: relative; z-index: 1;">
               <!-- Header -->
-              <table cellpadding="0" cellspacing="0" border="0" width="100%" style="margin-bottom: 16px;">
+              <table cellpadding="0" cellspacing="0" border="0" width="100%" style="padding: 24px;">
                 <tr>
-                  <td width="60%" align="left" style="vertical-align: middle;">
-                    <img src="https://i.ibb.co/nqJNfH6Q/Official-Logo-Transparent.png" alt="TrackMate Logo" width="100" style="display: block; margin-top: 4px;" />
+                  <td align="left" width="60%" style="vertical-align: middle;">
+                    <img src="https://i.ibb.co/nqJNfH6Q/Official-Logo-Transparent.png" alt="TrackMate Logo" width="100" style="display: block;" />
                   </td>
-                  <td width="40%" align="right" style="vertical-align: middle;">
-                    <span style="font-size: 18px; font-weight: 500; color: #333333;">TrackMate</span>
-                  </td>
-                </tr>
-              </table>
-
-              <!-- Title Section - Centered style -->
-              <table cellpadding="0" cellspacing="0" border="0" width="100%" style="margin-bottom: 20px; text-align: center;">
-                <tr>
-                  <td style="padding-bottom: 8px;">
-                    <h1 style="margin: 0; font-size: 24px; font-weight: 700; color: #1a1a1a;">Issue Report</h1>
-                  </td>
-                </tr>
-                <tr>
-                  <td style="padding-bottom: 8px;">
-                    <p style="margin: 0; font-size: 15px; color: #64748b;">A new issue has been reported via the TrackMate app</p>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <p style="margin: 0; font-family: monospace; font-size: 13px; padding: 5px 10px; background-color: rgba(237, 242, 247, 0.6); border-radius: 4px; display: inline-block; color: #64748b;">${reportId}</p>
+                  <td align="right" width="40%" style="vertical-align: middle;">
+                    <h1 style="margin: 0; font-size: 20px; font-weight: 500; color: #333333;">Issue Report</h1>
                   </td>
                 </tr>
               </table>
 
-              <!-- Issue Type & Urgency - Modern style with urgency first, no emoji in issue type -->
-              <table cellpadding="0" cellspacing="0" border="0" width="100%" style="margin-bottom: 20px;">
+              <!-- Main Content -->
+              <table cellpadding="0" cellspacing="0" border="0" width="100%" style="padding: 0 24px 24px;">
+                <!-- Title Section -->
                 <tr>
-                  <td align="center">
-                    <!-- Urgency Level - First and more prominent -->
-                    <div style="display: inline-block; vertical-align: middle; margin-right: 12px;">
-                      <table cellpadding="0" cellspacing="0" border="0">
-                        <tr>
-                          <td style="background-color: ${urgencyBgColor}; padding: 6px 12px; border-radius: 6px; border: 1px solid ${urgencyBorderColor}; box-shadow: 0 2px 4px ${urgencyShadowColor};">
-                            <table cellpadding="0" cellspacing="0" border="0">
-                              <tr>
-                                <td style="vertical-align: middle; padding-right: 6px;">
-                                  <span style="font-size: 14px;">${urgencyEmoji}</span>
-                                </td>
-                                <td style="vertical-align: middle;">
-                                  <span style="color: ${urgencyTextColor}; font-size: 14px; font-weight: 600; letter-spacing: 0.02em;">${urgencyDisplay}</span>
-                                </td>
-                              </tr>
-                            </table>
-                          </td>
-                        </tr>
-                      </table>
-                    </div>
-                    
-                    <!-- Issue Category - Second with no emoji -->
-                    <div style="display: inline-block; vertical-align: middle;">
-                      <table cellpadding="0" cellspacing="0" border="0">
-                        <tr>
-                          <td style="background-color: ${issueTypeBgColor}; padding: 6px 12px; border-radius: 6px; box-shadow: 0 2px 4px ${issueTypeShadowColor};">
-                            <span style="color: ${issueTypeTextColor}; font-size: 14px; font-weight: 500;">${issueType}</span>
-                          </td>
-                        </tr>
-                      </table>
-                    </div>
+                  <td style="padding-bottom: 24px;">
+                    <h2 style="margin: 0 0 8px 0; font-size: 24px; font-weight: 700; color: #333333;">Issue Report</h2>
+                    <p style="margin: 0 0 16px 0; color: #64748b;">A new issue has been reported via the TrackMate app</p>
+                    <p style="margin: 0; font-family: monospace; font-size: 14px; padding: 8px 12px; background-color: #f8fafc; border-radius: 6px; display: inline-block; color: #64748b;">${reportId}</p>
                   </td>
                 </tr>
-              </table>
 
-              <!-- Reporter Details -->
-              <table cellpadding="0" cellspacing="0" border="0" width="100%" style="background-color: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; margin-bottom: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+                <!-- Issue Type and Urgency -->
                 <tr>
-                  <td style="padding: 12px;">
+                  <td style="padding-bottom: 24px;">
                     <table cellpadding="0" cellspacing="0" border="0" width="100%">
                       <tr>
-                        <td style="padding-bottom: 8px; border-bottom: 1px solid #edf2f7;">
-                          <h3 style="margin: 0; font-size: 15px; font-weight: 600; color: #333333;">Reporter Details</h3>
+                        <td>
+                          <span style="display: inline-block; padding: 6px 12px; background-color: ${urgencyBgColor}; color: ${urgencyTextColor}; border-radius: 6px; font-weight: 500; font-size: 14px; margin-right: 8px;">
+                            ${urgencyEmoji} ${urgencyDisplay}
+                          </span>
+                          <span style="display: inline-block; padding: 6px 12px; background-color: #f8fafc; color: #64748b; border-radius: 6px; font-weight: 500; font-size: 14px;">
+                            ${issueType}
+                          </span>
                         </td>
                       </tr>
+                    </table>
+                  </td>
+                </tr>
+
+                <!-- Reporter Details -->
+                <tr>
+                  <td style="padding-bottom: 24px;">
+                    <table cellpadding="0" cellspacing="0" border="0" width="100%" style="background-color: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
                       <tr>
-                        <td style="padding-top: 8px;">
+                        <td style="padding: 20px;">
                           <table cellpadding="0" cellspacing="0" border="0" width="100%">
                             <tr>
-                              <td style="padding-bottom: 4px;">
-                                <span style="color: #64748b; font-size: 13px;">Name:</span>
-                                <span style="color: #1a1a1a; margin-left: 8px; font-size: 13px;">${issueData.name || 'Not provided'}</span>
+                              <td style="padding-bottom: 16px; border-bottom: 1px solid #edf2f7;">
+                                <h3 style="margin: 0; font-size: 18px; font-weight: 600; color: #333333;">Reporter Details</h3>
                               </td>
                             </tr>
                             <tr>
-                              <td style="padding-bottom: 4px;">
-                                <span style="color: #64748b; font-size: 13px;">Email:</span>
-                                <span style="color: #1a1a1a; margin-left: 8px; font-size: 13px;">${issueData.email || 'Not provided'}</span>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <span style="color: #64748b; font-size: 13px;">Date Observed:</span>
-                                <span style="color: #1a1a1a; margin-left: 8px; font-size: 13px;">${issueData.dateObserved || 'Not provided'}</span>
+                              <td style="padding-top: 16px;">
+                                <p style="margin: 0 0 8px 0; color: #4a5568;">Name: ${issueData.name || 'Not specified'}</p>
+                                <p style="margin: 0 0 8px 0; color: #4a5568;">Email: <a href="mailto:${issueData.email}" style="color: #3182ce; text-decoration: none;">${issueData.email}</a></p>
+                                <p style="margin: 0; color: #4a5568;">Date Observed: ${issueData.dateObserved || 'Not specified'}</p>
                               </td>
                             </tr>
                           </table>
@@ -257,51 +217,68 @@ const createIssueHTML = (issueData) => {
                     </table>
                   </td>
                 </tr>
-              </table>
 
-              <!-- Location Details -->
-              <tr>
-                <td style="padding-bottom: 24px;">
-                  <table cellpadding="0" cellspacing="0" border="0" width="100%" style="background-color: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
-                    <tr>
-                      <td style="padding: 20px;">
-                        <table cellpadding="0" cellspacing="0" border="0" width="100%">
-                          <tr>
-                            <td style="padding-bottom: 16px; border-bottom: 1px solid #edf2f7;">
-                              <h3 style="margin: 0; font-size: 18px; font-weight: 600; color: #333333;">Location Details</h3>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td style="padding-top: 16px;">
-                              <p style="margin: 0 0 12px 0;">
-                                <a href="${googleMapsUrl}" style="color: #3182ce; text-decoration: none; display: inline-flex; align-items: center;" target="_blank">
-                                  View on Google Maps
-                                </a>
-                              </p>
-                              <p style="margin: 0 0 8px 0; color: #4a5568;">Location: ${issueData.location || 'Not specified'}</p>
-                              <p style="margin: 0; font-family: monospace; color: #4a5568;">Coordinates: ${coordsDisplay} (${accuracyDisplay})</p>
-                            </td>
-                          </tr>
-                        </table>
-                      </td>
-                    </tr>
-                  </table>
-                </td>
-              </tr>
-
-              <!-- Issue Description -->
-              <table cellpadding="0" cellspacing="0" border="0" width="100%" style="background-color: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; margin-bottom: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+                <!-- Location Details -->
                 <tr>
-                  <td style="padding: 12px;">
-                    <table cellpadding="0" cellspacing="0" border="0" width="100%">
+                  <td style="padding-bottom: 24px;">
+                    <table cellpadding="0" cellspacing="0" border="0" width="100%" style="background-color: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
                       <tr>
-                        <td style="padding-bottom: 8px; border-bottom: 1px solid #edf2f7;">
-                          <h3 style="margin: 0; font-size: 15px; font-weight: 600; color: #333333;">Issue Description</h3>
+                        <td style="padding: 20px;">
+                          <table cellpadding="0" cellspacing="0" border="0" width="100%">
+                            <tr>
+                              <td style="padding-bottom: 16px; border-bottom: 1px solid #edf2f7;">
+                                <h3 style="margin: 0; font-size: 18px; font-weight: 600; color: #333333;">Location Details</h3>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td style="padding-top: 16px;">
+                                <p style="margin: 0 0 12px 0;">
+                                  <a href="${googleMapsUrl}" style="color: #3182ce; text-decoration: none;" target="_blank">View on Google Maps</a>
+                                </p>
+                                <p style="margin: 0 0 8px 0; color: #4a5568;">Location: ${issueData.location || 'Not specified'}</p>
+                                <p style="margin: 0; font-family: monospace; font-size: 14px; color: #4a5568;">Coordinates: ${coordsDisplay} (${accuracyDisplay})</p>
+                              </td>
+                            </tr>
+                          </table>
                         </td>
                       </tr>
+                    </table>
+                  </td>
+                </tr>
+
+                <!-- Issue Description -->
+                <tr>
+                  <td style="padding-bottom: 24px;">
+                    <table cellpadding="0" cellspacing="0" border="0" width="100%" style="background-color: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
                       <tr>
-                        <td style="padding-top: 8px;">
-                          <p style="margin: 0; color: #1a1a1a; font-size: 13px; line-height: 1.5;">${issueData.comments || 'No description provided'}</p>
+                        <td style="padding: 20px;">
+                          <table cellpadding="0" cellspacing="0" border="0" width="100%">
+                            <tr>
+                              <td style="padding-bottom: 16px; border-bottom: 1px solid #edf2f7;">
+                                <h3 style="margin: 0; font-size: 18px; font-weight: 600; color: #333333;">Issue Description</h3>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td style="padding-top: 16px;">
+                                <p style="margin: 0; color: #4a5568;">${issueData.comments || 'No description provided'}</p>
+                              </td>
+                            </tr>
+                          </table>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+
+                <!-- Photo Note -->
+                <tr>
+                  <td>
+                    <table cellpadding="0" cellspacing="0" border="0" width="100%" style="background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px;">
+                      <tr>
+                        <td style="padding: 16px;">
+                          <p style="margin: 0; color: #64748b; font-size: 14px;">
+                            <strong style="color: #4a5568;">Note:</strong> If a photo was submitted with this report, you'll find it attached to this email.
+                          </p>
                         </td>
                       </tr>
                     </table>
@@ -309,28 +286,16 @@ const createIssueHTML = (issueData) => {
                 </tr>
               </table>
 
-              <!-- Photo Note -->
-              <table cellpadding="0" cellspacing="0" border="0" width="100%" style="background-color: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; margin-bottom: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+              <!-- Footer -->
+              <table cellpadding="0" cellspacing="0" border="0" width="100%" style="background-color: #fafafa; padding: 24px; border-top: 1px solid #edf2f7;">
                 <tr>
-                  <td style="padding: 12px;">
-                    <p style="margin: 0; color: #64748b; font-size: 13px;">
-                      <strong>Note:</strong> If a photo was submitted with this report, you'll find it attached to this email.
-                    </p>
+                  <td style="text-align: center; color: #4a5568; font-size: 14px;">
+                    <p style="margin: 0 0 4px 0; font-weight: 500;">Thank you for helping us maintain and protect the Bibbulmun Track.</p>
+                    <p style="margin: 0; color: #718096;">Bibbulmun Track Foundation &copy; ${new Date().getFullYear()}</p>
                   </td>
                 </tr>
               </table>
-
             </div>
-
-            <!-- Footer -->
-            <table cellpadding="0" cellspacing="0" border="0" width="100%" style="background-color: #fafafa; padding: 16px; border-top: 1px solid #edf2f7; position: relative; z-index: 1;">
-              <tr>
-                <td style="text-align: center; color: #4a5568; font-size: 12px;">
-                  <p style="margin: 0 0 3px 0; font-weight: 500;">Thank you for helping us maintain and protect the Bibbulmun Track.</p>
-                  <p style="margin: 0; color: #718096;">Bibbulmun Track Foundation &copy; ${new Date().getFullYear()}</p>
-                </td>
-              </tr>
-            </table>
           </td>
         </tr>
       </table>
