@@ -1,5 +1,4 @@
-require('dotenv').config();
-
+// Environment variables are handled by Render
 const CLIENT_EMAILS = process.env.CLIENT_EMAILS ? 
   process.env.CLIENT_EMAILS.split(',').map(email => email.trim()) :
   ['pathlabs99@gmail.com'];
