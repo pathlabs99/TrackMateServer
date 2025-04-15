@@ -1,4 +1,15 @@
+/**
+ * @fileoverview Helper utilities for TrackMate Server
+ * @author Marwa
+ */
+
 // Color mappings
+/**
+ * @function getIssueTypeColor
+ * @description Maps issue types to their corresponding color codes
+ * @param {string} issueType - The type of issue
+ * @returns {string} Hex color code for the issue type
+ */
 const getIssueTypeColor = (issueType) => {
   const colorMap = {
     'Fallen Tree': '#8D6E63',
@@ -14,6 +25,12 @@ const getIssueTypeColor = (issueType) => {
   return colorMap[issueType] || '#9E9E9E';
 };
 
+/**
+ * @function getUrgencyColor
+ * @description Maps urgency levels to their corresponding color codes
+ * @param {string} urgency - The urgency level (low/medium/high)
+ * @returns {string} Hex color code for the urgency level
+ */
 const getUrgencyColor = (urgency) => {
   const colorMap = {
     'low': '#4CAF50',
@@ -25,6 +42,13 @@ const getUrgencyColor = (urgency) => {
 };
 
 // ID Generation
+/**
+ * @function generateRandomString
+ * @description Generates a random alphanumeric string of specified length
+ * @param {number} [length=4] - Length of the random string
+ * @returns {string} Random alphanumeric string
+ * @private
+ */
 const generateRandomString = (length = 4) => {
   const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
   return Array.from(
@@ -33,6 +57,13 @@ const generateRandomString = (length = 4) => {
   ).join('');
 };
 
+/**
+ * @function getIssueTypeCode
+ * @description Maps issue types to their corresponding short codes
+ * @param {string} issueType - The type of issue
+ * @returns {string} Four-letter code for the issue type
+ * @private
+ */
 const getIssueTypeCode = (issueType) => {
   const codeMap = {
     'Wildlife Concern': 'WILD',
@@ -47,6 +78,14 @@ const getIssueTypeCode = (issueType) => {
   return codeMap[issueType] || 'OTHR';
 };
 
+/**
+ * @function generateReportId
+ * @description Generates a unique report ID based on type, issue type, and urgency
+ * @param {string} type - Report type ('ISSUE' or 'SURVEY')
+ * @param {string} [issueType] - Type of issue (required for ISSUE type)
+ * @param {string} [urgency] - Urgency level (required for ISSUE type)
+ * @returns {string} Unique report ID in format TYPE-CODE-URGENCY-DATE-TIME-RANDOM
+ */
 const generateReportId = (type, issueType = null, urgency = null) => {
   const now = new Date();
   
@@ -70,6 +109,16 @@ const generateReportId = (type, issueType = null, urgency = null) => {
 };
 
 // CSV conversion
+/**
+ * @function convertReportToCSV
+ * @description Converts a report object to CSV format
+ * @param {Object} reportData - The report data to convert
+ * @param {Object} [coordinates] - Optional GPS coordinates
+ * @param {number} coordinates.latitude - Latitude
+ * @param {number} coordinates.longitude - Longitude
+ * @param {number} coordinates.accuracy - Accuracy in meters
+ * @returns {string} CSV formatted string with headers and data
+ */
 const convertReportToCSV = (reportData, coordinates = null) => {
   const headers = [
     "ReportID", "Name", "Email", "Telephone", "DateObserved",

@@ -1,3 +1,26 @@
+/**
+ * @fileoverview Email template for TrackMate survey submissions
+ * @author Marwa
+ * 
+ * @NOTES
+ * Developer Handover Notes:
+ * 1. Template Structure:
+ *    - Responsive HTML email template optimized for survey data
+ *    - Uses table-based layout for maximum email client compatibility
+ *    - Consistent styling with issue report emails
+ * 
+ * 2. Maintenance Points:
+ *    - Logo URL shared with issue template - update both if changed
+ *    - CSV data is automatically formatted and escaped
+ *    - Footer year updates dynamically
+ */
+
+/**
+ * @function createSurveyHTML
+ * @description HTML email content for survey submissions
+ * @param {Object} surveyData - The survey submission data
+ * @returns {string} Complete HTML email template
+ */
 const createSurveyHTML = (surveyData) => {
   return `
     <!DOCTYPE html>

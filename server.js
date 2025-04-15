@@ -1,3 +1,43 @@
+/**
+ * @fileoverview TrackMate Server - Main Application Entry Point
+ * @author TrackMate Team
+ * 
+ * @NOTES
+ * 1. Server Overview:
+ *    TrackMate is a trail maintenance reporting system for the Bibbulmun Track.
+ *    This server handles issue reports and track surveys from mobile app users,
+ *    processes them, and forwards them to track maintenance staff.
+ * 
+ * 2. Core Features:
+ *    - Issue Report Processing (/send-report)
+ *      * Validates report data
+ *      * Handles photo attachments
+ *      * Generates unique report IDs
+ *      * Sends formatted emails
+ * 
+ *    - Survey Submission (/submit-survey)
+ *      * Processes CSV track survey data
+ *      * Validates survey fields
+ *      * Sends survey reports
+ * 
+ * 3. Security:
+ *    - CORS protection
+ *    - Rate limiting
+ *    - Request validation
+ *    - Helmet security headers
+ *    - 50MB payload limit
+ * 
+ * 4. Monitoring:
+ *    - Health check endpoint (/health)
+ *    - Email connection verification
+ *    - Request logging
+ * 
+ * 5. Environment:
+ *    - Hosted on Render.com
+ *    - Default port: 3001
+ *    - Configurable via environment variables
+ */
+
 const express = require('express');
 const nodemailer = require('nodemailer');
 

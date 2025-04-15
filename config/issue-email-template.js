@@ -1,12 +1,36 @@
-// Replace your current createIssueHTML function with this updated version
-// that implements the new HTML template design
 
 /**
- * Creates a modern HTML email template for issue reports
+ * @fileoverview Email template generator for TrackMate issue reports
+ * @author Marwa
+ * 
+ * @NOTES
+ * 1. Template Structure:
+ *    - Uses responsive HTML email design with table-based layout
+ *    - Includes dynamic color coding for issue types and urgency levels
+ *    - Supports photo attachments with conditional rendering
+ * 
+ * 2. Maintenance Points:
+ *    - Color schemes are defined in getIssueTypeColor and getUrgencyColor
+ *    - Update colorMap objects when adding new issue types
+ *    - Logo URL is externally hosted on imgbb.com
+ * 
+ * 3. Limitations:
+ *    - Some email clients may strip CSS styles
+ *    - Max supported image size: 10MB
+ */
+
+/**
+ * Creates a HTML email template for issue reports
  * @param {Object} issueData The issue report data
  * @returns {string} HTML content for the email
  */
 
+/**
+ * @function getIssueTypeColor
+ * @description Maps issue types to their corresponding color codes
+ * @param {string} issueType - The type of issue
+ * @returns {string} Hex color code for the issue type
+ */
 const getIssueTypeColor = (issueType) => {
   const colorMap = {
     'Fallen Tree': '#8D6E63',
@@ -21,6 +45,12 @@ const getIssueTypeColor = (issueType) => {
   return colorMap[issueType] || '#9E9E9E';
 };
 
+/**
+ * @function getUrgencyColor
+ * @description Maps urgency levels to their corresponding color codes
+ * @param {string} urgency - The urgency level (low/medium/high)
+ * @returns {string} Hex color code for the urgency level
+ */
 const getUrgencyColor = (urgency) => {
   const colorMap = {
     'low': '#4CAF50',
@@ -30,6 +60,12 @@ const getUrgencyColor = (urgency) => {
   return colorMap[urgency.toLowerCase()] || '#FF9800';
 };
 
+/**
+ * @function createIssueHTML
+ * @description Generates HTML email content for issue reports
+ * @param {Object} issueData - The issue report data
+ * @returns {string} Complete HTML email template
+ */
 const createIssueHTML = (issueData) => {
   // Format coordinates and build Google Maps URL if coordinates exist
   const coords = issueData.coordinates || {};
@@ -127,7 +163,7 @@ const createIssueHTML = (issueData) => {
       issueTypeTextColor = '#4b5563'; // dark gray
       issueTypeShadowColor = 'rgba(75, 85, 99, 0.1)';
   }
-    
+  
   return `
     <!DOCTYPE html>
     <html lang="en">

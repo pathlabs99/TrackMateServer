@@ -1,8 +1,18 @@
+/**
+ * @fileoverview Security middleware configurations for TrackMate Server
+ * @author Wael
+ * @created 2025-04-15
+ */
+
 const helmet = require('helmet');
 const cors = require('cors');
 const rateLimit = require('express-rate-limit');
 
-// CORS configuration
+/**
+ * @constant {string[]} allowedOrigins
+ * @description List of allowed origins for CORS. Uses environment variable ALLOWED_ORIGINS if set,
+ * otherwise falls back to default development and production origins
+ */
 const allowedOrigins = process.env.ALLOWED_ORIGINS 
   ? process.env.ALLOWED_ORIGINS.split(',') 
   : [
@@ -21,6 +31,11 @@ const allowedOrigins = process.env.ALLOWED_ORIGINS
       'null'
     ];
 
+/**
+ * @constant {Object} corsMiddleware
+ * @description CORS configuration middleware with origin validation, methods, and headers setup
+ * @author Wael
+ */
 const corsMiddleware = cors({
   origin: function(origin, callback) {
     if (!origin) {
@@ -51,7 +66,13 @@ const corsMiddleware = cors({
   maxAge: 86400
 });
 
-// Rate limiting configuration
+/**
+ * @constant {Object} rateLimitMiddleware
+ * @description Rate limiting middleware to prevent abuse
+ * @author Wael
+ * @property {number} windowMs - Time window for rate limiting (15 minutes)
+ * @property {number} max - Maximum number of requests per window
+ */
 const rateLimitMiddleware = rateLimit({
   windowMs: 15 * 60 * 1000,
   max: 100,
@@ -60,7 +81,11 @@ const rateLimitMiddleware = rateLimit({
   legacyHeaders: false,
 });
 
-// Helmet security configuration
+/**
+ * @constant {Object} helmetMiddleware
+ * @description Helmet security middleware configuration with Content Security Policy
+ * @author Wael
+ */
 const helmetMiddleware = helmet({
   contentSecurityPolicy: {
     directives: {
@@ -79,7 +104,13 @@ const helmetMiddleware = helmet({
   crossOriginResourcePolicy: { policy: "cross-origin" },
 });
 
-// Request validation middleware
+/**
+ * @function validateRequest
+ * @description Middleware factory for request validation using Joi schemas
+ * @author Wael
+ * @param {Object} schema - Joi validation schema
+ * @returns {Function} Express middleware function
+ */
 const validateRequest = (schema) => {
   return (req, res, next) => {
     console.log('Validating request from:', req.headers['user-agent']);

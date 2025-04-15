@@ -1,4 +1,20 @@
+/**
+ * @fileoverview Utility functions for input validation and sanitization
+ * @author Wael
+ */
+
 // Photo validation helper
+/**
+ * @function validatePhoto
+ * @description Validates a photo upload ensuring it meets format and size requirements
+ * @param {string|null} photo - Base64 encoded photo string or null
+ * @returns {Object} Validation result
+ * @returns {boolean} result.valid - Whether the photo is valid
+ * @returns {string} [result.error] - Error code if invalid
+ * @returns {string} [result.message] - Error message if invalid
+ * @returns {string} [result.type] - Image type if valid (jpeg|png|jpg)
+ * @returns {string} [result.data] - Base64 data if valid
+ */
 const validatePhoto = (photo) => {
   if (!photo) return { valid: true };
 
@@ -39,6 +55,12 @@ const validatePhoto = (photo) => {
 };
 
 // Email field sanitization
+/**
+ * @function sanitizeEmailField
+ * @description Sanitizes email field content by removing newlines and HTML tags
+ * @param {string|null} field - Email field content to sanitize
+ * @returns {string} Sanitized email field content
+ */
 const sanitizeEmailField = (field) => {
   if (!field) return '';
   return String(field)
@@ -48,6 +70,13 @@ const sanitizeEmailField = (field) => {
 };
 
 // Survey CSV validation
+/**
+ * @function validateSurveyCSV
+ * @description Validates CSV data format for survey submissions
+ * @param {string} csvData - CSV data to validate
+ * @returns {boolean} True if CSV is valid, false otherwise
+ * @throws {Error} If CSV data is empty or has insufficient data in rows
+ */
 const validateSurveyCSV = (csvData) => {
   try {
     const lines = csvData.trim().split('\n').filter(line => line.trim());
